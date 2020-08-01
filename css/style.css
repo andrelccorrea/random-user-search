@@ -40,3 +40,12 @@
   flex-direction: row;
   align-items: center;
 }
+
+.loading {
+  margin-left: 10px;
+  font-size: 1.5rem;
+}
+
+.hidden {
+  display: none;
+}

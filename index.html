@@ -15,6 +15,23 @@
     <div class="my-container">
       <h1 class="center">Pesquisa de usuários</h1>
 
+      <div id="divLoading" class="flex-row flex-center">
+        <div class="preloader-wrapper small active">
+          <div class="spinner-layer spinner-green-only">
+            <div class="circle-clipper left">
+              <div class="circle"></div>
+            </div>
+            <div class="gap-patch">
+              <div class="circle"></div>
+            </div>
+            <div class="circle-clipper right">
+              <div class="circle"></div>
+            </div>
+          </div>
+        </div>
+        <span class="loading">Aguarde...</span>
+      </div>
+
       <div class="row flex-row">
         <div class="input-field col s12">
           <input type="text" id="userInput" />
@@ -25,15 +42,17 @@
         </a>
       </div>
 
-      <div class="row flex-row">
-        <div class="bordered">
-          <h2><span id="countFilteredUsersTitle"></span></h2>
-          <div id="filteredUsersList"></div>
-        </div>
+      <div id="divLists" class="hidden">
+        <div class="row flex-row">
+          <div class="bordered">
+            <h2><span id="countFilteredUsersTitle"></span></h2>
+            <div id="filteredUsersList"></div>
+          </div>
 
-        <div class="bordered">
-          <h2><span id="statisticsTitle"></span></h2>
-          <div id="statisticsList"></div>
+          <div class="bordered">
+            <h2><span id="statisticsTitle"></span></h2>
+            <div id="statisticsList"></div>
+          </div>
         </div>
       </div>
       <!-- Materialize Compiled and minified JavaScript -->

@@ -5,31 +5,34 @@ let numberFormat = null;
 
 let userInput = null;
 let searchButton = null;
+let divLoading = null;
+let divLists = null;
 let countFilteredUsersTitle = null;
 let statisticsTitle = null;
 let filteredUsersList = null;
 let statisticsList = null;
 
 window.addEventListener("load", () => {
+  mapElements();
+  userInput.addEventListener("keyup", handleUserInputKeyup);
+  searchButton.addEventListener("click", handleSearchButtonClick);
+  deactivateSearchButton();
+  numberFormat = Intl.NumberFormat("pt-BR", { maximumFractionDigits: 2 });
+  render();
+  fetchUsers();
+  userInput.focus();
+});
+
+function mapElements() {
   userInput = document.getElementById("userInput");
   searchButton = document.getElementById("searchButton");
   countFilteredUsersTitle = document.getElementById("countFilteredUsersTitle");
   filteredUsersList = document.getElementById("filteredUsersList");
   statisticsTitle = document.getElementById("statisticsTitle");
   statisticsList = document.getElementById("statisticsList");
-
-  userInput.addEventListener("keyup", handleUserInputKeyup);
-  searchButton.addEventListener("click", handleSearchButtonClick);
-  deactivateSearchButton();
-
-  numberFormat = Intl.NumberFormat("pt-BR", { maximumFractionDigits: 2 });
-
-  render();
-
-  fetchUsers();
-
-  userInput.focus();
-});
+  divLists = document.getElementById("divLists");
+  divLoading = document.getElementById("divLoading");
+}
 
 async function fetchUsers() {
   const res = await fetch(
@@ -47,8 +50,13 @@ async function fetchUsers() {
       gender,
     };
   });
-
+  showHiddenDivs();
   /*   console.log(allUsers); */
+}
+
+function showHiddenDivs() {
+  divLoading.classList.add("hidden");
+  divLists.classList.remove("hidden");
 }
 
 function filterUsers() {
